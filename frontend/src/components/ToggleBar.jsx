@@ -11,8 +11,8 @@ import { faFacebookF, faTwitter, faLinkedinIn, faYoutube, faInstagram } from '@f
 function ToggleBar() {
     return (
         // This div is conditionally rendered based on screen size
-        <div className="bg-[#FFCC33] text-black text-sm py-2 hidden md:flex px-4 lg:px-24 xl:px-36">
-            <div className="container mx-auto flex justify-between items-center px-4">
+        <div className="bg-[#FFCC33] text-black text-sm py-2 hidden md:flex md:px-12 lg:px-20 xl:px-32">
+            <div className="container mx-auto flex justify-between items-center">
                 {/* Left Section: Social Media Icons */}
                 <div className="flex space-x-3">
                     <Link to="#" className="hover:text-red-500">
