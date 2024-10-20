@@ -9,7 +9,7 @@ import About from '../components/about/About'
 import Menu from '../components/menu/Menu'
 import Contact from '../components/contactUs/Contact'
 import Login from '../components/login/Login'
-import SignUp from '../signUp/SignUp'
+import SignUp from '../components/signUp/SignUp'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
