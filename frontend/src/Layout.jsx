@@ -8,8 +8,8 @@ function Layout() {
   return (
     <>
         <ToggleBar/>
-         {/* <Header />
-        <Outlet/> */}
+         <Header />
+        <Outlet/>
         <Footer /> 
         
       

@@ -24,15 +24,14 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
-      // Update user profile after account creation
+      const updatedUser = { ...result.user, displayName };
       await updateProfile(result.user, { displayName });
-      // Set user state to include display name
-      setUser({ ...result.user, displayName });
-      setLoading(false);
-      return result; // Return result to the component
+      setUser(updatedUser); // Use updatedUser to keep the latest state
+      return result;
     } catch (error) {
+      throw error; // Propagate the error for higher level handling
+    } finally {
       setLoading(false);
-      throw error; // Allow calling component to catch and handle the error
     }
   };
 
@@ -41,19 +40,18 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-      // Update user profile with displayName if not set
-      if (user && !user.displayName) {
-        await updateProfile(user, { displayName: user.email.split('@')[0] }); // Use email as default display name
-        setUser({ ...user, displayName: user.email.split('@')[0] });
-      } else {
-        setUser(user);
+      let updatedUser = result.user;
+      if (updatedUser && !updatedUser.displayName) {
+        const defaultName = updatedUser.email.split("@")[0]; // Extract default name
+        await updateProfile(updatedUser, { displayName: defaultName });
+        updatedUser = { ...updatedUser, displayName: defaultName };
       }
-      setLoading(false);
-      return result; // Return result to the component
+      setUser(updatedUser); // Update with the user including displayName
+      return result;
     } catch (error) {
+      throw error;
+    } finally {
       setLoading(false);
-      throw error; // Allow calling component to catch and handle the error
     }
   };
 
@@ -62,12 +60,12 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      setUser(result.user); // Update user state on login
-      setLoading(false);
-      return result; // Return result to the component
+      setUser(result.user); // Update the user state after successful login
+      return result;
     } catch (error) {
+      throw error; // Allow upper-level components to handle errors
+    } finally {
       setLoading(false);
-      throw error; // Allow calling component to catch and handle the error
     }
   };
 
@@ -77,10 +75,10 @@ const AuthProvider = ({ children }) => {
     try {
       await signOut(auth);
       setUser(null); // Clear user state on logout
-      setLoading(false);
     } catch (error) {
+      throw error;
+    } finally {
       setLoading(false);
-      throw error; // Allow calling component to catch and handle the error
     }
   };
 
@@ -89,31 +87,29 @@ const AuthProvider = ({ children }) => {
     if (!auth.currentUser) return;
     setLoading(true);
     try {
-      await updateProfile(auth.currentUser, {
+      await updateProfile(auth.currentUser, { displayName: name, photoURL });
+      // Fetch the most up-to-date user profile after the update
+      const updatedUser = {
+        ...auth.currentUser, // Ensure you fetch the latest user data
         displayName: name,
         photoURL: photoURL,
-      });
-      // Update local user state
-      setUser({ ...auth.currentUser, displayName: name, photoURL: photoURL });
-      setLoading(false);
+      };
+      setUser(updatedUser); // Update local user state
     } catch (error) {
+      throw error;
+    } finally {
       setLoading(false);
-      throw error; // Allow calling component to catch and handle the error
     }
   };
 
-  // Check signed-in user
+  // Check signed-in user on component mount
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        setUser(null); // Clear user state if not logged in
-      }
-      setLoading(false);
+      setUser(currentUser || null); // Set user state based on auth state
+      setLoading(false); // Stop loading after the auth state has been checked
     });
 
-    return () => unsubscribe();
+    return () => unsubscribe(); // Clean up listener on unmount
   }, []);
 
   const authInfo = {
@@ -127,7 +123,9 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

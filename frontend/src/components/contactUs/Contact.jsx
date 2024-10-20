@@ -4,7 +4,7 @@ function Contact() {
   return (
     <div className="bg-black text-white">
       {/* Address Cards Section */}
-      <div className="container mx-auto p-10">
+      <div className="container mx-auto p-10 md:px-12 lg:px-20 xl:px-32">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card 1 */}
           <div className="border border-dashed border-gray-400 p-5">
@@ -139,7 +139,7 @@ function Contact() {
           </div>
 
           {/* Right section: Contact Information (1/3 of the width) */}
-          <div className="md:w-1/3 border border-dashed border-gray-400 p-4 h-2/3 mt-3">
+          <div className="md:w-1/3 border border-dashed border-gray-400 p-4 h-2/3 mt-3 text-center">
             <h2 className="text-2xl font-bold mb-4">Main Head Office</h2>
             <div className="mb-4">
               <p className="font-bold">Address</p>

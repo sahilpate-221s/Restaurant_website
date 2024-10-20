@@ -8,7 +8,7 @@ import Home from '../components/home/Home'
 import About from '../components/about/About'
 import Menu from '../components/menu/Menu'
 import Contact from '../components/contactUs/Contact'
-import Login from '../login/Login'
+import Login from '../components/login/Login'
 import SignUp from '../signUp/SignUp'
 
 const router = createBrowserRouter(
