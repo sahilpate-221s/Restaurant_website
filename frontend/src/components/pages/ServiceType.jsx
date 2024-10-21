@@ -12,7 +12,7 @@ function ServiceType() {
                style={{ boxShadow: '0 2px 8px rgba(255, 255, 255, 0.2)' }}>
             <img src="/images/dineIn.png" alt="Dine In" className="w-3/4 h-auto rounded-lg mb-4 mx-auto" />
             <h3 className="text-xl font-semibold text-center">1. Dine In</h3>
-            <p className="text-gray-400">Choose Your Best Combos From The Thousands Of Exciting Items.</p>
+            <p className="text-gray-400 text-center">Choose Your Best Combos From The Thousands Of Exciting Items.</p>
           </div>
 
           {/* Service Card 2: Take Away */}
@@ -20,7 +20,7 @@ function ServiceType() {
                style={{ boxShadow: '0 2px 8px rgba(255, 255, 255, 0.2)' }}>
             <img src="/images/takeAway.png" alt="Take Away" className="w-3/4 h-auto rounded-lg mb-4 mx-auto" />
             <h3 className="text-xl font-semibold text-center">2. Take Away</h3>
-            <p className="text-gray-400">Choose Your Best Combos From The Thousands Of Exciting Items.</p>
+            <p className="text-gray-400 text-center">Choose Your Best Combos From The Thousands Of Exciting Items.</p>
           </div>
 
           {/* Service Card 3: Home Delivery */}
@@ -28,7 +28,7 @@ function ServiceType() {
                style={{ boxShadow: '0 2px 8px rgba(255, 255, 255, 0.2)' }}>
             <img src="/images/orderOnline.png" alt="Home Delivery" className="w-3/4 h-auto rounded-lg mb-4 mx-auto" />
             <h3 className="text-xl font-semibold text-center">3. Home Delivery</h3>
-            <p className="text-gray-400">Choose Your Best Combos From The Thousands Of Exciting Items.</p>
+            <p className="text-gray-400 text-center">Choose Your Best Combos From The Thousands Of Exciting Items.</p>
           </div>
         </div>
       </div>

@@ -58,8 +58,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Open Hours Section */}
-        <div className="w-full lg:w-1/3 text-center lg:text-right">
+        {/* Open Hours Section (hidden on small devices) */}
+        <div className="hidden lg:w-1/3 text-center lg:text-right md:block">
           <h2 className="text-yellow-500 text-xl font-bold">Open Hours</h2>
           {/* Always visible content */}
           <div className="mt-4">

@@ -4,6 +4,7 @@ import SpecialDish from '../pages/SpecialDish'
 import ServiceType from '../pages/ServiceType'
 import Menu from '../menu/Menu'
 import BookTable from '../pages/BookTable'
+import BookingForm from '../pages/BookingForm'
 const Home = () => {
   return (
     <div>
@@ -12,6 +13,7 @@ const Home = () => {
       <ServiceType />
       <Menu/>
       <BookTable/>
+      {/* <BookingForm/> */}
     </div>
   )
 }

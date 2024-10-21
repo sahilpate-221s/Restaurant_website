@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HeroPage() {
   return (
@@ -24,9 +25,11 @@ export default function HeroPage() {
         </p>
 
         {/* Button */}
-        <button className='bg-[#FFCC33] text-black font-bold px-6 py-3 rounded-lg hover:bg-red-700 my-2 text-sm 2xl:text-base'>
-          BOOK A TABLE
-        </button>
+        <Link to="/booktable"> {/* Use Link to navigate to BookingForm */}
+          <button className='bg-[#eec240] text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-500 my-2 text-sm 2xl:text-base '>
+            BOOK A TABLE
+          </button>
+        </Link>
       </div>
     </section>
   );

@@ -10,6 +10,7 @@ import Menu from '../components/menu/Menu'
 import Contact from '../components/contactUs/Contact'
 import Login from '../components/login/Login'
 import SignUp from '../components/signUp/SignUp'
+import BookingForm from "../components/pages/BookingForm";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="booktable" element={<BookingForm />} />
 
       </Route>
     </>

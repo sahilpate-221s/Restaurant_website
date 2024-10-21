@@ -2,8 +2,9 @@ import React from 'react';
 
 export default function SpecialDish() {
     return (
-        <section className="py-10 lg:px-24 xl:px-36 px-4">
-            <div className="mx-auto" style={{ maxWidth: '1795px' }}> {/* Apply maxWidth here */}
+        // Apply responsive classes to hide the entire section on small devices
+        <section className="hidden md:block py-10 lg:px-24 xl:px-36 px-4">
+            <div className="mx-auto" style={{ maxWidth: '1795px' }}>
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold mb-2 text-white">OUR SPECIAL DISHES</h2>
                     <p className="max-w-xl mx-auto text-gray-400">
@@ -16,11 +17,11 @@ export default function SpecialDish() {
                 <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Dish 1 */}
                     <div className="bg-black rounded-lg p-4 shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105 ml-6 mr-6 md:ml-0 md:mr-0 flex flex-col h-auto cursor-pointer"
-                         style={{ boxShadow: '0 4px 30px rgba(255, 255, 255, 0.5)' }}>
-                        <img 
-                            src="/images/1st.png" 
-                            alt="Burger" 
-                            className="rounded-t-lg w-full h-[280px] md:h-48 object-cover" 
+                        style={{ boxShadow: '0 4px 30px rgba(255, 255, 255, 0.5)' }}>
+                        <img
+                            src="/images/1st.png"
+                            alt="Burger"
+                            className="rounded-t-lg w-full h-[280px] md:h-48 object-cover"
                         />
                         <div className="mt-auto text-center mb-4">
                             <h3 className="text-xl font-semibold text-white">BURGER</h3>
@@ -31,11 +32,11 @@ export default function SpecialDish() {
 
                     {/* Dish 2 */}
                     <div className="bg-black rounded-lg p-4 shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105 ml-6 mr-6 md:ml-0 md:mr-0 flex flex-col h-auto cursor-pointer"
-                         style={{ boxShadow: '0 4px 30px rgba(255, 255, 255, 0.5)' }}>
-                        <img 
-                            src="/images/2nd.png" 
-                            alt="Beef Burger Meal" 
-                            className="rounded-t-lg w-full h-[280px] md:h-48 object-cover" 
+                        style={{ boxShadow: '0 4px 30px rgba(255, 255, 255, 0.5)' }}>
+                        <img
+                            src="/images/2nd.png"
+                            alt="Beef Burger Meal"
+                            className="rounded-t-lg w-full h-[280px] md:h-48 object-cover"
                         />
                         <div className="mt-auto text-center mb-4">
                             <h3 className="text-xl font-semibold text-white">BEEF BURGER MEAL</h3>
@@ -46,11 +47,11 @@ export default function SpecialDish() {
 
                     {/* Dish 3 */}
                     <div className="bg-black rounded-lg p-4 shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105 ml-6 mr-6 md:ml-0 md:mr-0 flex flex-col h-auto cursor-pointer"
-                         style={{ boxShadow: '0 4px 30px rgba(255, 255, 255, 0.5)' }}>
-                        <img 
-                            src="/images/3rd.png" 
-                            alt="Double Cheese Pizza" 
-                            className="rounded-t-lg w-full h-[280px] md:h-48 object-cover" 
+                        style={{ boxShadow: '0 4px 30px rgba(255, 255, 255, 0.5)' }}>
+                        <img
+                            src="/images/3rd.png"
+                            alt="Double Cheese Pizza"
+                            className="rounded-t-lg w-full h-[280px] md:h-48 object-cover"
                         />
                         <div className="mt-auto text-center mb-4">
                             <h3 className="text-lg font-semibold text-white">DOUBLE CHEESE PIZZA</h3>
@@ -61,11 +62,11 @@ export default function SpecialDish() {
 
                     {/* Dish 4 */}
                     <div className="bg-black rounded-lg p-4 shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105 ml-6 mr-6 md:ml-0 md:mr-0 flex flex-col h-auto cursor-pointer"
-                         style={{ boxShadow: '0 4px 30px rgba(255, 255, 255, 0.5)' }}>
-                        <img 
-                            src="/images/4rt.png" 
-                            alt="Caesar Salad" 
-                            className="rounded-t-lg w-full h-[280px] md:h-48 object-cover" 
+                        style={{ boxShadow: '0 4px 30px rgba(255, 255, 255, 0.5)' }}>
+                        <img
+                            src="/images/4rt.png"
+                            alt="Caesar Salad"
+                            className="rounded-t-lg w-full h-[280px] md:h-48 object-cover"
                         />
                         <div className="mt-auto text-center mb-4">
                             <h3 className="text-lg font-semibold text-white">CAESAR SALAD</h3>

@@ -84,6 +84,19 @@ function BookTable() {
                 ⏰ {/* Add a clock icon here */}
               </div>
             </div>
+
+            <div>
+                <label htmlFor="guests-hall" className="block mb-2">Number of Guests</label>
+                <input
+                  type="number"
+                  id="guests-hall"
+                  placeholder="Number of Guests"
+                  className="w-full p-2 bg-black text-white rounded border border-gray-600 placeholder-gray-500 placeholder-opacity-100 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  style={{ caretColor: 'white' }} // Change caret color to white
+                />
+              </div>
+
+              
           </div>
           <button
             type="submit"
@@ -94,7 +107,7 @@ function BookTable() {
         </form>
 
         <div className="bg-black text-white w-full lg:w-1/3 p-6 rounded-lg shadow-lg border border-gray-600 flex flex-col justify-center items-center">
-          <h2 className="text-xl font-bold mb-4 text-center">OPENING HOURS</h2>
+          <h2 className="text-xl font-bold mb-4 text-center text-yellow-300">OPENING HOURS</h2>
           <p className="mb-2 text-center">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae
             nulla, provident laudantium voluptatibus eligendi.
