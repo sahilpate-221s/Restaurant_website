@@ -26,27 +26,33 @@ const AuthProvider = ({ children }) => {
       const result = await createUserWithEmailAndPassword(auth, email, password);
       const updatedUser = { ...result.user, displayName };
       await updateProfile(result.user, { displayName });
-      setUser(updatedUser); // Use updatedUser to keep the latest state
+      setUser(updatedUser);
       return result;
     } catch (error) {
-      throw error; // Propagate the error for higher level handling
+      throw error;
     } finally {
       setLoading(false);
     }
   };
 
-  // Signup with Gmail
+  // Signup with Google
   const signUpWithGmail = async () => {
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
       let updatedUser = result.user;
+
       if (updatedUser && !updatedUser.displayName) {
-        const defaultName = updatedUser.email.split("@")[0]; // Extract default name
+        const defaultName = updatedUser.email.split("@")[0];
         await updateProfile(updatedUser, { displayName: defaultName });
         updatedUser = { ...updatedUser, displayName: defaultName };
       }
-      setUser(updatedUser); // Update with the user including displayName
+
+      // Ensure photoURL is included
+      setUser({
+        ...updatedUser,
+        photoURL: updatedUser.photoURL || '',
+      });
       return result;
     } catch (error) {
       throw error;
@@ -60,10 +66,10 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
-      setUser(result.user); // Update the user state after successful login
+      setUser(result.user);
       return result;
     } catch (error) {
-      throw error; // Allow upper-level components to handle errors
+      throw error;
     } finally {
       setLoading(false);
     }
@@ -74,7 +80,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       await signOut(auth);
-      setUser(null); // Clear user state on logout
+      setUser(null);
     } catch (error) {
       throw error;
     } finally {
@@ -88,13 +94,12 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       await updateProfile(auth.currentUser, { displayName: name, photoURL });
-      // Fetch the most up-to-date user profile after the update
       const updatedUser = {
-        ...auth.currentUser, // Ensure you fetch the latest user data
+        ...auth.currentUser,
         displayName: name,
-        photoURL: photoURL,
+        photoURL,
       };
-      setUser(updatedUser); // Update local user state
+      setUser(updatedUser);
     } catch (error) {
       throw error;
     } finally {
@@ -105,11 +110,11 @@ const AuthProvider = ({ children }) => {
   // Check signed-in user on component mount
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser || null); // Set user state based on auth state
-      setLoading(false); // Stop loading after the auth state has been checked
+      setUser(currentUser || null);
+      setLoading(false);
     });
 
-    return () => unsubscribe(); // Clean up listener on unmount
+    return () => unsubscribe();
   }, []);
 
   const authInfo = {
