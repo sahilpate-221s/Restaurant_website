@@ -1,31 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const http = require('http');
-const path = require('path');
-const nodemailer = require('nodemailer');
-const mongoose = require('mongoose');
 const cors = require('cors');
-
-
+const connectDB = require('./config/database'); // Import the connectDB function
+const userRoutes = require('./routes/userRoutes'); // Import user routes
 require('dotenv').config();
 
-// Initialize express app
 const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(cors());
+app.use(bodyParser.json());
 
-// Database connection
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error('MongoDB connection error:', err));
+// Connect to the database
+connectDB(); // Call the function to connect to MongoDB
 
+// Use user routes
+app.use('/api/users', userRoutes); // Prefix for user routes
 
-
-
-
-// Start the server
-const server = http.createServer(app);
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
